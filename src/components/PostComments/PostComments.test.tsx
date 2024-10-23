@@ -3,12 +3,12 @@ import Post from '.';
 import PostComment from '.';
 
 describe('Teste para o componente PostComment', () => {
-    it('Deve renderizar o componente corretamente', () => {
+    test('Deve renderizar o componente corretamente', () => {
         render(<PostComment/>);
         expect(screen.getByText('Comentar')).toBeInTheDocument();
     });
 
-    it("Deve adicionar dois comentarios", () => {
+    test("Deve adicionar dois comentarios", () => {
         render(<PostComment/>)
 
         fireEvent.change(screen.getByTestId('teste-comentario'), {
