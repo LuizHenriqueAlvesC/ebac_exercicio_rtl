@@ -7,4 +7,26 @@ describe('Teste para o componente PostComment', () => {
         render(<PostComment/>);
         expect(screen.getByText('Comentar')).toBeInTheDocument();
     });
+
+    it("Deve adicionar dois comentarios", () => {
+        render(<PostComment/>)
+
+        fireEvent.change(screen.getByTestId('teste-comentario'), {
+            target: {
+                value: 'Primeiro comentario do teste'
+            }
+        })
+        
+        fireEvent.click(screen.getByTestId('botao-adicionar'))
+
+        fireEvent.change(screen.getByTestId('teste-comentario'), {
+            target: {
+                value: 'Segundo comentario do teste'
+            }
+        })
+
+        fireEvent.click(screen.getByTestId('botao-adicionar'))
+
+        expect(screen.getAllByTestId('teste-elemento')).toHaveLength(2)
+    })
 });
